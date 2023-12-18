@@ -1,0 +1,27 @@
+###This is a writeup for the TryHackMe machine 'Daily Bugle'. Initial foothold and user were similiar to another boot2root i had done, and root was overall pretty basic.###
+
+initial scan shows three ports open, 22, 80, and 3306
+
+visited the website on 80, found a regular homepage
+
+ran dirsearch, found README.txt, which gave the joomla version number, v3.7.0
+
+found a CVE for the version, CVE-2017-8917, which was an sqli that exposed the internal database (used https://github.com/stefanlucas/Exploit-Joomla)
+
+found hash for user jonah, and got password through john, jonah:spiderman123
+
+after getting access to the dashboard, installed a malicious extension (https://github.com/p0dalirius/Joomla-webshell-plugin) and spawned a webshell as user apache
+
+using linpeas, found configuration.php file that contained a password:'nv5uz9r3ZEDzVjNu' 
+
+used this to get shell as jjameson user
+
+got user flag
+
+checking sudo -l, found that jjameson can run /usr/bin/yum as root
+
+checking gtfobins, found a payload for the yum binary
+
+running it gives a shell as root
+
+got root flag
