@@ -1,0 +1,21 @@
+###This is a writeup for the Hack The Box challenge 'Factory'. Simple challenge, but invaluable for learning more about PLC and modbus.###
+
+connected to interface using nc
+
+three commands are available, status of the system, sending a modbus command, and exit
+
+running 1, found that system is in auto_mode
+
+sent 520526DBFF00 to 2 to start manual_mode
+
+running 1 again, see that its in manual_mode
+
+problem seems to be that low and high sensors are corrupted and the tank needs to be emptied to get the flag
+
+checking the diagram, it seems that if cutoff_in is on and manual_mode mode is on, stop_in is on
+
+sent 5205001AFF00 to 2
+
+then, to clear the tank, send 52050538FF00 to set force_start_out to on
+
+got flag
