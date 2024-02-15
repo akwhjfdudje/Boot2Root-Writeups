@@ -1,0 +1,11 @@
+###This is a writeup for the Hack The Box 'Sherlock' called 'Meerkat'. This was one of the first 'sherlocks' released on the platform, and it was an interesting problem. ###
+
+on the pcap file provided, a service called bonitasoft was running
+
+attacker tried perform credential stuffing on the service, and got initial access through compromised credentials
+
+CVE-2022-25237 was used to obtain rce on the service
+
+attacker used MITRE technique T1098.004 to gain persistence on the machine
+
+###Full Disclosure; I didn't really know what the writeup format was supposed to be like for sherlocks, so this may appear a little lackluster###
